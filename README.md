@@ -12,6 +12,7 @@
 terraform plan \
 -var 'access_key=AK123456789123456789' \
 -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 
+-var 's3_bucket_name=your-bucket-name'
 ```
 
 ### terraform apply
@@ -20,4 +21,5 @@ terraform plan \
 terraform apply \
 -var 'access_key=AK123456789123456789' \
 -var 'secret_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 
+-var 's3_bucket_name=your-bucket-name'
 ```
