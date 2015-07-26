@@ -1,0 +1,36 @@
+box: ubuntu
+build:
+  steps:
+    - script:
+        name: create terraform directory and export PATH
+        code: |
+          mkdir -p $HOME/terraform
+          export PATH=$PATH:$HOME/terraform
+    - script:
+        name: install wget / curl / unzip
+        code: |
+          apt-get update
+          apt-get -y -qq install wget unzip curl
+    - script:
+        name: download terraform
+        code: |
+          cd $HOME/terraform 
+          wget https://dl.bintray.com/mitchellh/terraform/terraform_0.6.1_linux_amd64.zip
+          unzip terraform_0.6.1_linux_amd64.zip
+          rm terraform_0.6.1_linux_amd64.zip
+    - script:
+        name: run terraform plan
+        code: |
+          terraform plan -refresh=false -var "access_key=$AWS_ACCESS_KEY_ID" -var "secret_key=$AWS_SECRET_ACCESS_KEY"
+    #- script:
+    #    name: run terraform apply 
+    #    code: |
+    #      terraform apply -var "access_key=$AWS_ACCESS_KEY_ID" -var "secret_key=$AWS_SECRET_ACCESS_KEY"
+
+  after-steps:
+    - sherzberg/slack-notify:
+        subdomain: $SLACK_TEAM
+        token: $SLACK_TOKEN
+        channel: $SLACK_CHANNEL
+        username: wercker
+        icon_url: https://avatars3.githubusercontent.com/u/1695193?s=140
