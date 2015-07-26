@@ -1,4 +1,4 @@
-## oreno-terraform-iam
+## oreno-terraform-s3
 [![wercker status](https://app.wercker.com/status/56a09212a80618e3a9e0fdfd4a90ec20/s/master "wercker status")](https://app.wercker.com/project/bykey/56a09212a80618e3a9e0fdfd4a90ec20)
 
 ### required
