@@ -5,6 +5,7 @@
 
 - AWS access key
 - AWS secret access key
+- S3 bucket name
 
 ### terraform plan
 
